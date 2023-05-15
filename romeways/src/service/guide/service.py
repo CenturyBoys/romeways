@@ -10,14 +10,18 @@ from romeways.src.domain.models.config.itinerary import Itinerary
 from romeways.src.domain.models.config.map import RegionMap
 from romeways.src.domain.models.config.queue import GenericQueueConfig
 from romeways.src.infrastructure.spawner import Spawner
+from romeways.src.service.chauffeur import ChauffeurService
 
 
-@meeseeks.OnlyOne()
+guide_service_singleton_ref = meeseeks.OnlyOne()
+
+
+@guide_service_singleton_ref
 class GuideService(IGuide):
     def __init__(self):
-        self.__itineraries = {}
-        self.__region_maps = {}
-        self.__spawners = []
+        self._itineraries = {}
+        self._region_maps = {}
+        self._spawners = []
 
     def register_route(
         self, queue_name: str, config: GenericQueueConfig, callback: Callable
@@ -27,9 +31,9 @@ class GuideService(IGuide):
             config=config,
             callback=callback,
         )
-        if config.connector_name not in self.__itineraries:
-            self.__itineraries.update({config.connector_name: []})
-        self.__itineraries[config.connector_name].append(itinerary)
+        if config.connector_name not in self._itineraries:
+            self._itineraries.update({config.connector_name: []})
+        self._itineraries[config.connector_name].append(itinerary)
 
     def register_connector(
         self,
@@ -40,18 +44,23 @@ class GuideService(IGuide):
         region_map = RegionMap(
             spawn_process=spawn_process, config=config, connector=connector
         )
-        if config.connector_name not in self.__region_maps:
-            self.__region_maps.update({config.connector_name: region_map})
+        if config.connector_name not in self._region_maps:
+            self._region_maps.update({config.connector_name: region_map})
 
     async def start(self):
-        self.__spawners = [
+        self._spawners = [
             Spawner(
-                region_map=self.__region_maps.get(connector_name),
-                itineraries=self.__itineraries.get(connector_name, []),
+                region_map=self._region_maps.get(connector_name),
+                itineraries=self._itineraries.get(connector_name, []),
             )
-            for connector_name in self.__region_maps
+            for connector_name in self._region_maps
         ]
-        await asyncio.gather(*[spawner.start() for spawner in self.__spawners])
+        await asyncio.gather(
+            *[
+                spawner.start(callback_to_spawn=ChauffeurService.run)
+                for spawner in self._spawners
+            ]
+        )
 
     def end(self):
-        [spawner.close() for spawner in self.__spawners]
+        [spawner.close() for spawner in self._spawners]

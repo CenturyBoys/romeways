@@ -1,3 +1,2 @@
-
 class ResendException(Exception):
     pass

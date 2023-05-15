@@ -7,4 +7,3 @@ class GenericQueueConfig:
     frequency: float
     max_chunk_size: int
     sequential: bool
-    resend_on_resolve_fail: bool

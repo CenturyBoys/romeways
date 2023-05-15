@@ -10,11 +10,9 @@ class AQueueConnector(IQueueConnector):
     def __init__(
         self,
         connector_config: GenericConnectorConfig,
-        queue_name: str,
         config: GenericQueueConfig,
     ):
         self._connector_config = connector_config
-        self._queue_name = queue_name
         self._config = config
 
     @abstractmethod

@@ -15,6 +15,8 @@ def queue_consumer(queue_name: str, config: GenericQueueConfig):
         raise TypeError("The config attribute is not a subclass of GenericQueueConfig")
 
     def request_guide(fn: Callable):
+        if not asyncio.iscoroutinefunction(fn):
+            raise TypeError("The callback is not a coroutine function")
         GuideService().register_route(queue_name, config, fn)
         return fn
 
@@ -43,6 +45,6 @@ async def start():
     try:
         await GuideService().start()
         while True:
-            await asyncio.sleep(1)
+            await asyncio.sleep(10)
     except BaseException:
         GuideService().end()

@@ -4,7 +4,7 @@ from .src.romeways import (
     start,
     GenericConnectorConfig,
     GenericQueueConfig,
-    AQueueConnector
+    AQueueConnector,
 )
 from .src.domain.exceptions.exception import ResendException
 from .src.domain.models.message import Message
@@ -17,7 +17,7 @@ __all__ = [
     "GenericQueueConfig",
     "AQueueConnector",
     "ResendException",
-    "Message"
+    "Message",
 ]
 
 # Memory queue extra

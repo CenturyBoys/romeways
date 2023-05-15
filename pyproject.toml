@@ -13,6 +13,7 @@ packages = [
 python = "^3.11"
 meeseeks-singleton = "^0.4.2"
 romeways_memory_queue = { path = "./romeways_extras/memory_queue/", optional = true}
+freezegun = "^1.2.2"
 
 [tool.poetry.extras]
 memory = ["romeways_memory_queue"]
@@ -21,6 +22,12 @@ memory = ["romeways_memory_queue"]
 homepage = "https://github.com/CenturyBoys/romeways"
 repository = "https://github.com/CenturyBoys/romeways"
 documentation = "https://github.com/CenturyBoys/romeways"
+
+[tool.poetry.group.dev.dependencies]
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.0.0"
+pylint = "^2.17.4"
+mutatest = "^3.1.0"
 
 [build-system]
 requires = ["poetry-core"]

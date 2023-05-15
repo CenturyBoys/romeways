@@ -4,7 +4,13 @@ import random
 from multiprocessing import Queue
 
 import romeways
-from romeways import MemoryConnectorConfig, MemoryQueueConnector, MemoryQueueConfig, ResendException, Message
+from romeways import (
+    MemoryConnectorConfig,
+    MemoryQueueConnector,
+    MemoryQueueConfig,
+    ResendException,
+    Message,
+)
 
 
 if __name__ == "__main__":
@@ -18,8 +24,6 @@ if __name__ == "__main__":
     @romeways.queue_consumer(queue_name="fila.pagamentos.done", config=config_q)
     async def controller(message: Message):
         time_to_await = random.uniform(0, 3.0)
-        if time_to_await > 2:
-           raise ResendException()
         print("Eu sou a controller", message)
         await asyncio.sleep(time_to_await)
 

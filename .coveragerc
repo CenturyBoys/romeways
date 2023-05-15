@@ -1,0 +1,8 @@
+[report]
+exclude_lines =
+    @dataclass(slots=True, frozen=True)
+
+omit =
+    */interfaces/*
+    */abstract/*
+    */__init__.py
