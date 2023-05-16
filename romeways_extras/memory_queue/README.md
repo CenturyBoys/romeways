@@ -50,7 +50,7 @@ config_q = romeways.MemoryQueueConfig(
 )
 
 # Register a controller/consumer for the queue name
-@romeways.queue_consumer(queue_name="fila.pagamentos.done", config=config_q)
+@romeways.queue_consumer(queue_name="queue.payment.done", config=config_q)
 async def controller(message: romeways.Message):
     print(message)
 
