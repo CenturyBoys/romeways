@@ -43,7 +43,7 @@ class ChauffeurService(IChauffeur):
             time_now = time()
             delta = time_now - self._last_execution_time
             await_time = await_time - delta
-            if await_time < 0:
+            if await_time < 0.0:
                 queue_name: str = self._itinerary.queue_name
                 logging.warning(
                     "The queue handler for connector %s and queue %s "
@@ -53,9 +53,9 @@ class ChauffeurService(IChauffeur):
                     float(delta),
                     queue_config.frequency,
                 )
-                await_time = 0
+                await_time = 0.0
         else:
-            await_time = 0
+            await_time = 0.0
         await asyncio.sleep(await_time)
         self._last_execution_time = time()
 
@@ -98,10 +98,10 @@ class ChauffeurService(IChauffeur):
             messages: List[bytes] = await self._queue_connector.get_messages(
                 max_chunk_size=queue_config.max_chunk_size
             )
-            if queue_config.sequential:
-                for message in messages:
-                    await self._resolve_message(message)
-            else:
+            if queue_config.sequential is False:
                 await asyncio.gather(
                     *[self._resolve_message(message) for message in messages]
                 )
+            else:
+                for message in messages:
+                    await self._resolve_message(message)

@@ -28,17 +28,22 @@ repos:
       types: [ python ]
       pass_filenames: false
       always_run: true
-    - id: mutatest
-      name: mutatest
-      entry: mutatest
-      language: system
-      types: [ python ]
       args:
         [
-          "-n",
-          "100",
-          "-s",
-          "romeways",
+          "-cov=."
         ]
-      pass_filenames: false
-      always_run: false
+# mutates not use coverage to ignore dataclass slots and frozen params
+#    - id: mutatest
+#      name: mutatest
+#      entry: mutatest
+#      language: system
+#      types: [ python ]
+#      args:
+#        [
+#          "-n",
+#          "100",
+#          "-s",
+#          ".",
+#        ]
+#      pass_filenames: false
+#      always_run: false
