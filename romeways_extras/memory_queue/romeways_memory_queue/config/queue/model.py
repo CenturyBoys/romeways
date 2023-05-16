@@ -9,4 +9,3 @@ class MemoryQueueConfig(GenericQueueConfig):
     frequency: float = field(default=0.25)
     max_chunk_size: int = field(default=10)
     sequential: bool = field(default=False)
-    resend_on_resolve_fail: bool = field(default=True)
