@@ -4,7 +4,7 @@ import pytest
 
 import romeways
 from romeways import GenericQueueConfig, GenericConnectorConfig
-from romeways.src.service import GuideService
+from romeways.src.service.guide import GuideService
 from romeways.src.service.guide.service import guide_service_singleton_ref
 from tests.mocs.stubs.queue_connector import StubQueueConnector
 

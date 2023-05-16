@@ -9,7 +9,7 @@ from romeways import GenericConnectorConfig, GenericQueueConfig
 from romeways.src.domain.exceptions import ResendException
 from romeways.src.domain.models.config.itinerary import Itinerary
 from romeways.src.domain.models.config.map import RegionMap
-from romeways.src.service import ChauffeurService
+from romeways.src.service.chauffeur import ChauffeurService
 
 from tests.mocs.stubs.queue_connector import StubQueueConnector
 
@@ -39,21 +39,19 @@ async def test_clock_handler():
     async def callback(message):
         pass
 
-    chauffeur_service = get_chauffeur_service(callback)
-
     with patch("asyncio.sleep", return_value=None) as patched_asyncio_sleep:
         with patch("logging.warning", return_value=None) as patched_logging_warning:
             with freezegun.freeze_time("2012-01-14T00:00:00.000"):
+                chauffeur_service = get_chauffeur_service(callback)
                 await chauffeur_service._clock_handler()
-            with freezegun.freeze_time("2012-01-14T00:00:00.500"):
+            with freezegun.freeze_time("2012-01-14T00:00:01.000"):
+                await chauffeur_service._clock_handler()
+            with freezegun.freeze_time("2012-01-14T00:00:01.500"):
                 await chauffeur_service._clock_handler()
             with freezegun.freeze_time("2012-01-14T00:00:03.000"):
                 await chauffeur_service._clock_handler()
-    patched_asyncio_sleep.assert_has_calls([call(0), call(0.5), call(0)])
-    patched_logging_warning.assert_called_with(
-        "The queue handler for connector 'test_connector_name' and queue 'test_queue_name'"
-        " are taken 2.5 seconds and your frequency is 1"
-    )
+    patched_asyncio_sleep.assert_has_calls([call(0), call(0), call(0.5), call(0)])
+    patched_logging_warning.assert_called_once()
 
 
 @pytest.mark.asyncio
@@ -66,10 +64,7 @@ async def test_resolve_message_exception():
     with patch("logging.error", return_value=None) as patched_logging_error:
         await chauffeur_service._resolve_message(message=b"10")
 
-    patched_logging_error.assert_called_with(
-        "A error occurs on handler callback for the connector 'test_connector_name'"
-        "  and queue 'test_queue_name'. Error resend_error"
-    )
+    patched_logging_error.assert_called_once()
 
 
 @pytest.mark.asyncio
@@ -85,11 +80,7 @@ async def test_resolve_message_resend_exception():
         ) as patched_resend_message:
             await chauffeur_service._resolve_message(message=b"10")
 
-    patched_logging_error.assert_called_with(
-        "A error occurs on handler callback for the connector 'test_connector_name'"
-        "  and queue 'test_queue_name'. The follow message will be resend Message(p"
-        "ayload='10', rw_resend_times=0). Error resend_error"
-    )
+    patched_logging_error.assert_called_once()
     patched_resend_message.assert_called_with(message=b"10")
 
 

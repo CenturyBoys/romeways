@@ -63,4 +63,5 @@ class GuideService(IGuide):
         )
 
     def end(self):
-        [spawner.close() for spawner in self._spawners]
+        for spawner in self._spawners:
+            spawner.close()

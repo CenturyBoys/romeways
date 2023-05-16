@@ -31,12 +31,12 @@ def test_to_json():
     message = Message.from_message(message=b"10")
     assert message.rw_resend_times == 0
     assert message.payload == "10"
-    json_message = message.toJSON()
+    json_message = message.to_json()
     assert json_message == b'{"payload": "10", "rw_resend_times": 0}'
 
 
 def test_rebuild_message_from_message_to_json():
     message_a = Message.from_message(message=b"10")
-    json_message = message_a.toJSON()
+    json_message = message_a.to_json()
     message_b = Message.from_message(message=json_message)
     assert message_b == message_a

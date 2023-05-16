@@ -7,7 +7,7 @@ from romeways import GenericQueueConfig, GenericConnectorConfig
 from romeways.src.domain.models.config.itinerary import Itinerary
 from romeways.src.domain.models.config.map import RegionMap
 from romeways.src.infrastructure.spawner import Spawner
-from romeways.src.service import GuideService
+from romeways.src.service.guide import GuideService
 from romeways.src.service.guide.service import guide_service_singleton_ref
 from tests.mocs.stubs.queue_connector import StubQueueConnector
 
@@ -31,13 +31,16 @@ def test_register_route():
     guide_service.register_route(
         queue_name=queue_name, config=config, callback=callback
     )
+    guide_service.register_route(
+        queue_name=queue_name, config=config, callback=callback
+    )
     itinerary = Itinerary(
         queue_name=queue_name,
         config=config,
         callback=callback,
     )
 
-    assert guide_service._itineraries[config.connector_name] == [itinerary]
+    assert guide_service._itineraries[config.connector_name] == [itinerary, itinerary]
 
 
 def test_register_connector():
@@ -50,6 +53,9 @@ def test_register_connector():
 
     guide_service.register_connector(
         connector=connector, config=config, spawn_process=spawn_process
+    )
+    guide_service.register_connector(
+        connector=connector, config=config, spawn_process=True
     )
     region_map = RegionMap(
         spawn_process=spawn_process,

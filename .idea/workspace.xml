@@ -6,22 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="5a2df9fb-5794-447d-91e5-f51774a5878b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meuloro.py" beforeDir="false" afterPath="$PROJECT_DIR$/meuloro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/core/abstract/infrastructure/queue_connector/abstract.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/core/abstract/infrastructure/queue_connector/abstract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/core/interfaces/infrastructure/spawner/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/core/interfaces/infrastructure/spawner/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/exceptions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/exceptions/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/exceptions/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/exceptions/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/romeways/src/core/interfaces/service/chauffeur/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/core/interfaces/service/chauffeur/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/config/queue/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/config/queue/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/message/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/message/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/message/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/message/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/infrastructure/connector/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/infrastructure/spawner/infrastructure.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/infrastructure/spawner/infrastructure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/romeways.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/romeways.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/romeways/src/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/service/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/service/chauffeur/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/service/chauffeur/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/romeways/src/service/guide/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/service/guide/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/romeways_extras/memory_queue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/romeways_extras/memory_queue/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/romeways/src/service/chauffeur/test_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/romeways/src/service/chauffeur/test_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/romeways/src/service/guide/test_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/romeways/src/service/guide/test_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/romeways/src/test_romeways.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/romeways/src/test_romeways.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/marco/projects/romeways",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/marco/projects/romeways&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -76,94 +72,94 @@
       <recent name="$PROJECT_DIR$/romeways/domain/models/config/connector" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for test_romeways.test_start">
-    <configuration name="pytest for test_romeways.test_connector_register" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.pytest for test_service.test_clock_handler">
+    <configuration name="pytest for test_service.test_clock_handler" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="romeways" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src/service/chauffeur" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_romeways.test_connector_register&quot;" />
+      <option name="_new_target" value="&quot;test_service.test_clock_handler&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_romeways.test_connector_register_wrong_config_type" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_service.test_register_connector" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="romeways" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src/service/guide" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_romeways.test_connector_register_wrong_config_type&quot;" />
+      <option name="_new_target" value="&quot;test_service.test_register_connector&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_romeways.test_connector_register_wrong_connector_type" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_service.test_register_route" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="romeways" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src/service/guide" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_romeways.test_connector_register_wrong_connector_type&quot;" />
+      <option name="_new_target" value="&quot;test_service.test_register_route&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_romeways.test_queue_consumer" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_service.test_resolve_message_exception" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="romeways" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src/service/chauffeur" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_romeways.test_queue_consumer&quot;" />
+      <option name="_new_target" value="&quot;test_service.test_resolve_message_exception&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for test_romeways.test_start" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_service.test_resolve_message_resend_exception" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="romeways" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/romeways/src/service/chauffeur" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_romeways.test_start&quot;" />
+      <option name="_new_target" value="&quot;test_service.test_resolve_message_resend_exception&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for test_romeways.test_start" />
-        <item itemvalue="Python tests.pytest for test_romeways.test_connector_register" />
-        <item itemvalue="Python tests.pytest for test_romeways.test_connector_register_wrong_connector_type" />
-        <item itemvalue="Python tests.pytest for test_romeways.test_connector_register_wrong_config_type" />
-        <item itemvalue="Python tests.pytest for test_romeways.test_queue_consumer" />
+        <item itemvalue="Python tests.pytest for test_service.test_clock_handler" />
+        <item itemvalue="Python tests.pytest for test_service.test_register_connector" />
+        <item itemvalue="Python tests.pytest for test_service.test_register_route" />
+        <item itemvalue="Python tests.pytest for test_service.test_resolve_message_resend_exception" />
+        <item itemvalue="Python tests.pytest for test_service.test_resolve_message_exception" />
       </list>
     </recent_temporary>
   </component>

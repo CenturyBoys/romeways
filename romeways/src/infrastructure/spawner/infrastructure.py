@@ -29,8 +29,10 @@ class Spawner(ISpawner):
             )
 
     def close(self):
-        [process.kill() for process in self._processes]
-        [task.cancel() for task in self._tasks]
+        for process in self._processes:
+            process.kill()
+        for task in self._tasks:
+            task.cancel()
 
     async def _async_worker(
         self,
