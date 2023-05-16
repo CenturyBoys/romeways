@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a2df9fb-5794-447d-91e5-f51774a5878b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/images/banner.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.coveragerc" beforeDir="false" afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/romeways.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/romeways.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/config/connector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/config/connector/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/config/queue/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/config/queue/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/domain/models/message/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/domain/models/message/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways/src/service/chauffeur/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/romeways/src/service/chauffeur/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/romeways_extras/memory_queue/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/romeways_extras/memory_queue/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +35,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/memory__queue&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/marco/projects/romeways&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "release/0.1.0",
+    "last_opened_file_path": "/home/marco/projects/romeways",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -179,11 +170,6 @@
           <url>file://$PROJECT_DIR$/tests/romeways/src/service/chauffeur/test_service.py</url>
           <line>82</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/romeways/src/service/chauffeur/service.py</url>
-          <line>101</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
