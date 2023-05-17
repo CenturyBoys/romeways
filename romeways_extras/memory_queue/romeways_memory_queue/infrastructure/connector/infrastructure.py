@@ -9,7 +9,7 @@ class MemoryQueueConnector(AQueueConnector):
         pass
 
     async def get_messages(self, max_chunk_size: int) -> List[bytes]:
-        queue: Queue = self._connector_config.queue
+        queue: Queue = self._config.queue
         buffer = []
         for _ in range(abs(max_chunk_size)):
             if not queue.empty():
@@ -19,5 +19,5 @@ class MemoryQueueConnector(AQueueConnector):
         return buffer
 
     async def send_messages(self, message: bytes):
-        queue: Queue = self._connector_config.queue
+        queue: Queue = self._config.queue
         queue.put_nowait(message)
