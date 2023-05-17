@@ -22,6 +22,7 @@ __all__ = [
 
 # Memory queue extra
 try:
+
     from romeways_memory_queue import (
         MemoryConnectorConfig,
         MemoryQueueConnector,
