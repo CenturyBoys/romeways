@@ -91,16 +91,20 @@ Romeways can run each connector in a separate process or in async workers for th
 
 # Example
 
-For this example we are using the extra memory
+For this example we are using the extra package `memory`
 
 ```python
 from multiprocessing import Queue
 
 import romeways
 
+# Config the connector
+queue = Queue()
+
 # Create a queue config
 config_q = romeways.MemoryQueueConfig(
-    connector_name="memory-dev1"
+    connector_name="memory-dev1", 
+    queue=queue
 )
 
 # Register a controller/consumer for the queue name
@@ -108,10 +112,7 @@ config_q = romeways.MemoryQueueConfig(
 async def controller(message: romeways.Message):
     print(message)
 
-# Config the connector
-queue = Queue()
-
-config_p = romeways.MemoryConnectorConfig(connector_name="memory-dev1", queue=queue)
+config_p = romeways.MemoryConnectorConfig(connector_name="memory-dev1")
 
 # Register a connector
 romeways.connector_register(

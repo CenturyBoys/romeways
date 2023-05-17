@@ -393,6 +393,18 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "romeways-memory-queue"
+version = "0.2.0"
+description = ""
+category = "main"
+optional = true
+python-versions = ">=3.11,<4.0"
+files = [
+    {file = "romeways_memory_queue-0.2.0-py3-none-any.whl", hash = "sha256:694ef9b233150dde27f24537f4fc48e1f9b9014a75633e9e636128430eb447a8"},
+    {file = "romeways_memory_queue-0.2.0.tar.gz", hash = "sha256:757df7e2a5d088cc675ce35212a1150fd3ffe249ae6c14e14beb21265b6ba692"},
+]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -531,4 +543,4 @@ memory = ["romeways_memory_queue"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "bc3ca10537f31e4c4869cd68b701bc94e00836e7bb1ee5244a135fdcb33617dc"
+content-hash = "3cc048df88b350f84984786375af212ad66d94af3d003b197380d4f2e6f32827"
