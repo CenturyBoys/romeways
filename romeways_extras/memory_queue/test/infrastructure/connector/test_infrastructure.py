@@ -13,8 +13,14 @@ from romeways_extras.memory_queue.romeways_memory_queue import (
 def get_connector():
     queue = Queue()
     connector_name = "test_connector"
-    connector_config = MemoryConnectorConfig(connector_name=connector_name, queue=queue)
-    config = MemoryQueueConfig(connector_name=connector_name)
+    connector_config = MemoryConnectorConfig(connector_name=connector_name)
+    config = MemoryQueueConfig(
+        connector_name=connector_name,
+        queue=queue,
+        frequency=1,
+        sequential=False,
+        max_chunk_size=10,
+    )
     return MemoryQueueConnector(connector_config=connector_config, config=config)
 
 

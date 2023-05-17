@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "romeways_memory_queue"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Marco Sievers de Almeida Ximit Gaia <im.ximit@gmail.com>"]
 readme = "README.md"
