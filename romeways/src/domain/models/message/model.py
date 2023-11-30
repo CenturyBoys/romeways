@@ -4,7 +4,7 @@ from json import JSONDecodeError
 from typing import Self
 
 
-@dataclass
+@dataclass(slots=True)
 class Message:
     payload: str
     rw_resend_times: int

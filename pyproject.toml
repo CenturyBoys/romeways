@@ -13,9 +13,11 @@ packages = [
 python = "^3.11"
 meeseeks-singleton = "^0.4.2"
 romeways_memory_queue = { version = "^0.2.0", optional = true}
+romeways_kafka_queue = { version = "^0.1.0", optional = true}
 
 [tool.poetry.extras]
 memory = ["romeways_memory_queue"]
+kafka = ["romeways_kafka_queue"]
 
 [tool.poetry.urls]
 homepage = "https://github.com/CenturyBoys/romeways"
@@ -28,6 +30,7 @@ pytest-asyncio = "^0.21.0"
 pytest-cov = "^4.0.0"
 pylint = "^2.17.4"
 mutatest = "^3.1.0"
+black = "^23.11.0"
 
 [build-system]
 requires = ["poetry-core"]
