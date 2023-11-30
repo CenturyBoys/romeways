@@ -24,7 +24,7 @@ def get_chauffeur_service(callback, sequential=False) -> ChauffeurService:
 
     chauffeur = ChauffeurService(
         queue_connector=StubQueueConnector(
-            connector_config=GenericConnectorConfig(connector_name="test"),
+            connector_config=GenericConnectorConfig(connector_name="tests"),
             config=queue_config,
         ),
         itinerary=Itinerary(

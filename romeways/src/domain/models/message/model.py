@@ -4,7 +4,7 @@ from json import JSONDecodeError
 from typing import Self
 
 
-@dataclass
+@dataclass(slots=True)
 class Message:
     payload: str
     rw_resend_times: int
@@ -23,5 +23,13 @@ class Message:
 
         return cls(payload=payload, rw_resend_times=resend_times)
 
+    def raise_resend_counter(self) -> Self:
+        return Message(self.payload, self.rw_resend_times + 1)
+
     def to_json(self):
-        return json.dumps(self, default=lambda o: o.__dict__).encode()
+        return json.dumps(
+            {
+                "payload": self.payload,
+                "rw_resend_times": self.rw_resend_times,
+            }
+        ).encode()
