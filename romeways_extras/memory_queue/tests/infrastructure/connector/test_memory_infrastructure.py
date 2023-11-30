@@ -3,7 +3,7 @@ from multiprocessing import Queue
 
 import pytest
 
-from romeways_extras.memory_queue.romeways_memory_queue import (
+from romeways import (
     MemoryConnectorConfig,
     MemoryQueueConfig,
     MemoryQueueConnector,

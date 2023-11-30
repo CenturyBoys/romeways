@@ -9,7 +9,6 @@ from .service.guide import GuideService
 
 
 def queue_consumer(queue_name: str, config: GenericQueueConfig):
-
     if not isinstance(config, GenericQueueConfig):
         raise TypeError("The config attribute is not a subclass of GenericQueueConfig")
 

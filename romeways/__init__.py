@@ -22,7 +22,6 @@ __all__ = [
 
 # Memory queue extra
 try:
-
     from romeways_memory_queue import (
         MemoryConnectorConfig,
         MemoryQueueConnector,
@@ -30,5 +29,18 @@ try:
     )
 
     __all__ += ("MemoryConnectorConfig", "MemoryQueueConnector", "MemoryQueueConfig")
+except ImportError as error:  # pragma: no cover
+    pass
+
+
+# Kafka queue extra
+try:
+    from romeways_kafka_queue import (
+        KafkaConnectorConfig,
+        KafkaQueueConnector,
+        KafkaQueueConfig,
+    )
+
+    __all__ += ("KafkaConnectorConfig", "KafkaQueueConnector", "KafkaQueueConfig")
 except ImportError as error:  # pragma: no cover
     pass

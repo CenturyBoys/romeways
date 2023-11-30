@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "romeways_kafka_queue"
+version = "0.1.0"
+description = ""
+authors = ["Marco Sievers de Almeida Ximit Gaia <im.ximit@gmail.com>"]
+readme = "README.md"
+packages = [
+    {include = "romeways_kafka_queue"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiokafka = "^0.8.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

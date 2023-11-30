@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from time import time
-from typing import List, Type
+from typing import List
 
 from romeways.src.core.abstract.infrastructure.queue_connector import AQueueConnector
 from romeways.src.core.interfaces.service.chauffeur import IChauffeur
@@ -19,10 +19,9 @@ class Empty:
 class ChauffeurService(IChauffeur):
     @classmethod
     async def run(cls, region_map: RegionMap, itineraries: List[Itinerary]):
-        queue_connector_class: Type[AQueueConnector] = region_map.connector
         chauffeurs = []
         for itinerary in itineraries:
-            queue_connector = queue_connector_class(
+            queue_connector = region_map.connector(
                 connector_config=region_map.config,
                 config=itinerary.config,
             )
@@ -40,8 +39,7 @@ class ChauffeurService(IChauffeur):
         queue_config: GenericQueueConfig = self._itinerary.config
         await_time = queue_config.frequency
         if self._last_execution_time:
-            time_now = time()
-            delta = time_now - self._last_execution_time
+            delta = time() - self._last_execution_time
             await_time = await_time - delta
             if await_time < 0.0:
                 queue_name: str = self._itinerary.queue_name
@@ -60,45 +58,44 @@ class ChauffeurService(IChauffeur):
         self._last_execution_time = time()
 
     async def _resolve_message(self, message: bytes):
-        callback = self._itinerary.callback
         message_obj = Message.from_message(message=message)
         try:
-            await callback(message_obj)
+            await self._itinerary.callback(message_obj)
         except ResendException as exception:
             queue_config: GenericQueueConfig = self._itinerary.config
             logging.error(
                 "A error occurs on handler %s for the connector %s and queue %s."
                 " The follow message will be resend %s. Error %s",
-                callback.__name__,
+                self._itinerary.callback.__name__,
                 queue_config.connector_name,
                 self._itinerary.queue_name,
                 message_obj,
-                str(exception),
+                exception,
             )
             await self._resend_message(message=message)
         except BaseException as exception:  # pylint: disable=W0718
             queue_config: GenericQueueConfig = self._itinerary.config
             logging.error(
                 "A error occurs on handler %s for the connector %s and queue %s. Error %s",
-                callback.__name__,
+                self._itinerary.callback.__name__,
                 queue_config.connector_name,
                 self._itinerary.queue_name,
                 exception,
             )
 
     async def _resend_message(self, message: bytes):
-        message_obj = Message.from_message(message=message)
-        message_obj.rw_resend_times += 1
-        await self._queue_connector.send_messages(message_obj.to_json())
+        _message = (
+            Message.from_message(message=message).raise_resend_counter().to_json()
+        )
+        await self._queue_connector.send_messages(_message)
 
     async def _watch(self):
         while True:
             await self._clock_handler()
-            queue_config: GenericQueueConfig = self._itinerary.config
             messages: List[bytes] = await self._queue_connector.get_messages(
-                max_chunk_size=queue_config.max_chunk_size
+                max_chunk_size=self._itinerary.config.max_chunk_size
             )
-            if queue_config.sequential is False:
+            if self._itinerary.config.sequential is False:
                 await asyncio.gather(
                     *[self._resolve_message(message) for message in messages]
                 )

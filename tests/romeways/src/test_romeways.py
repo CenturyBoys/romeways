@@ -26,7 +26,6 @@ def test_queue_consumer_wrong_config():
 
 
 def test_queue_consumer_invalid_controller():
-
     config = GenericQueueConfig(
         connector_name="test_connector_name",
         max_chunk_size=10,
@@ -44,7 +43,6 @@ def test_queue_consumer_invalid_controller():
 
 
 def test_queue_consumer():
-
     guide_service_singleton_ref.clean_references()
 
     config = GenericQueueConfig(
