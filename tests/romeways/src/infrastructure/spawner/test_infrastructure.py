@@ -14,7 +14,7 @@ async def test_start_async_worker():
     spawner = Spawner(
         region_map=RegionMap(
             connector=StubQueueConnector,
-            config=GenericConnectorConfig(connector_name="test"),
+            config=GenericConnectorConfig(connector_name="tests"),
             spawn_process=False,
         ),
         itineraries=[],
@@ -39,7 +39,7 @@ async def test_start_process_worker():
     spawner = Spawner(
         region_map=RegionMap(
             connector=StubQueueConnector,
-            config=GenericConnectorConfig(connector_name="test"),
+            config=GenericConnectorConfig(connector_name="tests"),
             spawn_process=True,
         ),
         itineraries=[],

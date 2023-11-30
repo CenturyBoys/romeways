@@ -6,7 +6,7 @@ import pytest
 from aiokafka import AIOKafkaConsumer, AIOKafkaProducer, ConsumerRecord
 from kafka import TopicPartition
 
-from romeways_extras.kafka_queue.romeways_kafka_queue import (
+from romeways import (
     KafkaConnectorConfig,
     KafkaQueueConfig,
     KafkaQueueConnector,
@@ -81,7 +81,7 @@ class StubAIOKafkaProducer:
 
 @pytest.mark.asyncio
 async def test_on_start():
-    connector_name = "test"
+    connector_name = "tests"
     connector_config = KafkaConnectorConfig(
         connector_name=connector_name,
         bootstrap_server="localhost:9200",
@@ -110,11 +110,13 @@ async def test_on_start():
         client_id=connector_config.client_id,
         group_id=config.group_id,
     )
-    producer.assert_called_once_with(AIOKafkaProducer, bootstrap_servers=connector_config.bootstrap_server)
+    producer.assert_called_once_with(
+        AIOKafkaProducer, bootstrap_servers=connector_config.bootstrap_server
+    )
 
 
 async def get_connector():
-    connector_name = "test"
+    connector_name = "tests"
     bootstrap_server = "localhost:9200"
     client_id = "romeways_client_id"
     group_id = "romeways_group_id"
@@ -133,8 +135,10 @@ async def get_connector():
         max_chunk_size=10,
     )
     connector = KafkaQueueConnector(connector_config=connector_config, config=config)
-    connector._producer = StubAIOKafkaProducer(bootstrap_server=bootstrap_server)
-    connector._consumer = StubAIOKafkaConsumer(
+    connector._producer = StubAIOKafkaProducer(  # pylint: disable=W0212
+        bootstrap_server=bootstrap_server
+    )
+    connector._consumer = StubAIOKafkaConsumer(  # pylint: disable=W0212
         topic,
         bootstrap_server=bootstrap_server,
         client_id=client_id,

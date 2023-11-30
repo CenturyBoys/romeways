@@ -14,6 +14,7 @@ Here you can see all implemented consumer:
 | Queue Type            | Install using extra | description                                    |
 |-----------------------|---------------------|------------------------------------------------|
 | multiprocessing.Queue | memory              | [here](romeways_extras/memory_queue/README.md) |
+| Apache Kafka          | kafka               | [here](romeways_extras/kafka_queue/README.md)  |
 
 How to install extra packages?
 

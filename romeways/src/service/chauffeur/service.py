@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from time import time
-from typing import List, Type
+from typing import List
 
 from romeways.src.core.abstract.infrastructure.queue_connector import AQueueConnector
 from romeways.src.core.interfaces.service.chauffeur import IChauffeur
@@ -84,9 +84,10 @@ class ChauffeurService(IChauffeur):
             )
 
     async def _resend_message(self, message: bytes):
-        message_obj = Message.from_message(message=message)
-        message_obj.rw_resend_times += 1
-        await self._queue_connector.send_messages(message_obj.to_json())
+        _message = (
+            Message.from_message(message=message).raise_resend_counter().to_json()
+        )
+        await self._queue_connector.send_messages(_message)
 
     async def _watch(self):
         while True:
